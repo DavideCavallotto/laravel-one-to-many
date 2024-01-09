@@ -34,7 +34,7 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'image' => 'required|url', // Assumendo che l'immagine sia un URL, altrimenti cambia la regola di validazione
+            'image' => 'required', // Assumendo che l'immagine sia un URL, altrimenti cambia la regola di validazione
         ]);
     
         // Se la validazione passa, salva il progetto e ritorna alla pagina dei progetti
