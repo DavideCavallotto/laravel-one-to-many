@@ -7,6 +7,7 @@
         <img class="w-50" src="{{$project->image}}" alt="">
         <h1>{{$project->title}}</h1>
         <p>{{$project->description}}</p>
+        <p>{{ optional($project->type)->name}}</p>
     </section>
     <div class="text-center mb-2">
         <a class="text-light text-decoration-none btn btn-primary" href="{{route('admin.projects.index')}}">I miei Progetti</a>
