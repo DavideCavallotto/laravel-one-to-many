@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Type;
 
 class ProjectController extends Controller
 {
@@ -23,7 +24,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $types = Type::all();
+        return view('admin.projects.create',compact('types'));
     }
 
     /**
@@ -35,6 +37,7 @@ class ProjectController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'image' => 'required', // Assumendo che l'immagine sia un URL, altrimenti cambia la regola di validazione
+            'type_id' => 'nullable|exists:types,id'
         ]);
     
         // Se la validazione passa, salva il progetto e ritorna alla pagina dei progetti
@@ -64,7 +67,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $types = Type::all();
+        return view('admin.projects.edit', compact('project', 'types'));
     }
 
     /**

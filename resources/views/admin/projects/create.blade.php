@@ -23,6 +23,15 @@
         <input type="text" class="form-control" name="image" id="image" placeholder="Aggiungi un immagine al tuo progetto">
 
     </div>
+    <div class="mb-3">
+        <select name="type_id" class="form-control" id="type_id">
+            <option>Seleziona una categoria</option>
+            @foreach($types as $type)
+              <option @selected( old('type_id') == $type->id ) value="{{ $type->id }}">{{ $type->name }}</option>
+            @endforeach
+        </select>
+
+    </div>
 
     <div>
         <input type="submit" class="btn btn-primary" value="Aggiungi">
